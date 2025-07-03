@@ -6,6 +6,7 @@ import routes from './routes'
 import ErrorHandleMiddleware from 'shared/middlewares/ErrorHandleMiddleware'
 import { ErrorRequestHandler } from 'express'
 import { AppDataSource } from 'shared/typeorm/data-source'
+import { errors } from 'celebrate'
 
 AppDataSource.initialize().then(async () => {
   const app = express()
@@ -14,6 +15,7 @@ AppDataSource.initialize().then(async () => {
   app.use(express.json())
 
   app.use(routes)
+  app.use(errors())
   app.use(ErrorHandleMiddleware.handleError as unknown as ErrorRequestHandler)
 
   console.log('Connect to the database!')
