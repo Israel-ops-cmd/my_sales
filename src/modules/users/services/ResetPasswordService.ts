@@ -16,7 +16,7 @@ export default class ResetPasswordService {
       throw new AppError('User token not exists', 404)
     }
 
-    const user = await usersRepositories.findByid(userToken.id)
+    const user = await usersRepositories.findByid(userToken.user_id)
     if(!user) {
       throw new AppError('User not exists', 404)
     }
