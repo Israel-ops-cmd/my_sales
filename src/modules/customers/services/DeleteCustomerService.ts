@@ -14,5 +14,6 @@ export default class DeleteCustomerService {
     }
 
     await customerRepository.remove(customer)
+    return customer
   }
 }
